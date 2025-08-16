@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Sparkles, Smartphone, Tablet, Monitor, Link, Loader2, Music, User, Clock } from 'lucide-react';
+import { Sparkles, Smartphone, Tablet, Monitor, Link, Loader2, Music, Clock } from 'lucide-react';
 import { parseSpotifyUrl, extractTrackId } from '@/lib/spotify';
 import { useState, useEffect } from 'react';
 

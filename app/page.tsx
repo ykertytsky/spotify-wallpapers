@@ -84,36 +84,39 @@ export default function Home() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <PageHeader />
 
-      {/* Two Column Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-        {/* Preview Column */}
-        <div className="order-2 lg:order-1">
-          <WallpaperPreview 
-            ref={previewRef}
-            selectedDevice={selectedDevice}
-            songName={trackData?.songName || "Drop It Like It's Hot!"}
-            artistName={trackData?.artistName || "HAARPER"}
-            currentTime="0:21"
-            totalTime={trackData?.duration || "2:15"}
-            albumArtUrl={trackData?.albumArt}
-            isLoading={isLoadingTrack}
-          />
-        </div>
+      {/* Main Content */}
+      <main role="main" aria-label="Spotify Wallpaper Generator">
+        {/* Two Column Layout */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12" aria-label="Wallpaper creation interface">
+          {/* Preview Column */}
+          <aside className="order-2 lg:order-1" aria-label="Wallpaper preview">
+            <WallpaperPreview 
+              ref={previewRef}
+              selectedDevice={selectedDevice}
+              songName={trackData?.songName || "Drop It Like It's Hot!"}
+              artistName={trackData?.artistName || "HAARPER"}
+              currentTime="0:21"
+              totalTime={trackData?.duration || "2:15"}
+              albumArtUrl={trackData?.albumArt}
+              isLoading={isLoadingTrack}
+            />
+          </aside>
 
-        {/* Form Column */}
-        <div className="order-1 lg:order-2">
-          <WallpaperForm
-            spotifyLink={spotifyLink}
-            selectedDevice={selectedDevice}
-            onSpotifyLinkChange={setSpotifyLink}
-            onDeviceChange={setSelectedDevice}
-            onGenerate={handleGenerate}
-            onTrackDataChange={handleTrackDataChange}
-            onLoadingChange={handleLoadingChange}
-            isGenerating={isGenerating}
-          />
-        </div>
-      </div>
+          {/* Form Column */}
+          <section className="order-1 lg:order-2" aria-label="Wallpaper configuration">
+            <WallpaperForm
+              spotifyLink={spotifyLink}
+              selectedDevice={selectedDevice}
+              onSpotifyLinkChange={setSpotifyLink}
+              onDeviceChange={setSelectedDevice}
+              onGenerate={handleGenerate}
+              onTrackDataChange={handleTrackDataChange}
+              onLoadingChange={handleLoadingChange}
+              isGenerating={isGenerating}
+            />
+          </section>
+        </section>
+      </main>
     </div>
   );
 }

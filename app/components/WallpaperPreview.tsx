@@ -166,7 +166,7 @@ const WallpaperPreview = forwardRef<HTMLDivElement, WallpaperPreviewProps>(({
                                 }}>HAARPER</div>
                                 <div style={{ 
                                   fontSize: selectedDevice === 'mobile' ? '10px' : '8px'
-                                }}>DROP IT LIKE IT'S HOT!</div>
+                                }}>DROP IT LIKE IT&apos;S HOT!</div>
                               </div>
                             </div>
                           )}

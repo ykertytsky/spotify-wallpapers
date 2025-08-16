@@ -16,6 +16,7 @@ Create beautiful, high-resolution wallpapers from your favorite Spotify tracks. 
 
 [Deploy your own instance](#deployment) or check out the live demo!
 
+
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 15 with App Router
