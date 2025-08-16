@@ -10,7 +10,12 @@ import { toPng } from 'html-to-image';
 export default function Home() {
   const [selectedDevice, setSelectedDevice] = useState<string>('mobile');
   const [spotifyLink, setSpotifyLink] = useState<string>('');
-  const [trackData, setTrackData] = useState<any>(null);
+  const [trackData, setTrackData] = useState<{
+    songName: string;
+    artistName: string;
+    albumArt?: string;
+    duration: string;
+  } | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
 
@@ -62,7 +67,12 @@ export default function Home() {
     }
   };
 
-  const handleTrackDataChange = useCallback((data: any) => {
+  const handleTrackDataChange = useCallback((data: {
+    songName: string;
+    artistName: string;
+    albumArt?: string;
+    duration: string;
+  } | null) => {
     setTrackData(data);
   }, []);
 

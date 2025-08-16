@@ -14,7 +14,12 @@ interface WallpaperFormProps {
   onSpotifyLinkChange: (link: string) => void;
   onDeviceChange: (device: string) => void;
   onGenerate: () => void;
-  onTrackDataChange?: (trackData: any) => void;
+  onTrackDataChange?: (trackData: {
+    songName: string;
+    artistName: string;
+    albumArt?: string;
+    duration: string;
+  } | null) => void;
   isGenerating?: boolean;
 }
 
@@ -28,7 +33,12 @@ export default function WallpaperForm({
   isGenerating = false
 }: WallpaperFormProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const [trackData, setTrackData] = useState<any>(null);
+  const [trackData, setTrackData] = useState<{
+    songName: string;
+    artistName: string;
+    albumArt?: string;
+    duration: string;
+  } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   // Parse Spotify URL when it changes
@@ -108,7 +118,7 @@ export default function WallpaperForm({
             
             {!error && !trackData && (
               <p className="text-xs text-muted-foreground">
-                Paste a link to any Spotify track you'd like to create a wallpaper for
+                Paste a link to any Spotify track you&apos;d like to create a wallpaper for
               </p>
             )}
           </div>

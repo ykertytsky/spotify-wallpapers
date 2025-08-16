@@ -5,6 +5,7 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Sparkles } from 'lucide-react';
 import { IoIosSkipBackward, IoIosSkipForward } from "react-icons/io";
 import { forwardRef } from 'react';
+import Image from 'next/image';
 
 interface WallpaperPreviewProps {
   selectedDevice: string;
@@ -62,12 +63,12 @@ const WallpaperPreview = forwardRef<HTMLDivElement, WallpaperPreviewProps>(({
                         {/* Album Art */}
                         <div style={{ marginBottom: selectedDevice === 'mobile' ? '20px' : '12px' }}>
                           {albumArtUrl ? (
-                            <img 
+                            <Image 
                               src={albumArtUrl} 
                               alt={`${songName} album art`}
+                              width={selectedDevice === 'mobile' ? 180 : 80}
+                              height={selectedDevice === 'mobile' ? 180 : 80}
                               style={{
-                                width: selectedDevice === 'mobile' ? '180px' : '80px',
-                                height: selectedDevice === 'mobile' ? '180px' : '80px',
                                 borderRadius: '6px',
                                 objectFit: 'cover',
                                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
