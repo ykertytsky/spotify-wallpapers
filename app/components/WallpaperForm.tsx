@@ -4,9 +4,36 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Sparkles, Smartphone, Tablet, Monitor, Link, Loader2 } from 'lucide-react';
+import { Sparkles, Smartphone, Tablet, Monitor, Link, Loader2, Music, User, Clock } from 'lucide-react';
 import { parseSpotifyUrl, extractTrackId } from '@/lib/spotify';
 import { useState, useEffect } from 'react';
+
+// Skeleton Components
+const Skeleton = ({ className }: { className: string }) => (
+  <div className={`animate-pulse bg-muted rounded ${className}`} />
+);
+
+const TrackInfoSkeleton = () => (
+  <div className="space-y-3 p-4 border rounded-lg bg-muted/20">
+    <div className="flex items-center space-x-3">
+      <Skeleton className="w-12 h-12 rounded" />
+      <div className="flex-1 space-y-2">
+        <Skeleton className="h-4 w-3/4" />
+        <Skeleton className="h-3 w-1/2" />
+      </div>
+    </div>
+    <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-1">
+        <Clock className="w-4 h-4 text-muted-foreground" />
+        <Skeleton className="h-3 w-8" />
+      </div>
+      <div className="flex items-center space-x-1">
+        <Music className="w-4 h-4 text-muted-foreground" />
+        <Skeleton className="h-3 w-16" />
+      </div>
+    </div>
+  </div>
+);
 
 interface WallpaperFormProps {
   spotifyLink: string;
@@ -20,6 +47,7 @@ interface WallpaperFormProps {
     albumArt?: string;
     duration: string;
   } | null) => void;
+  onLoadingChange?: (loading: boolean) => void;
   isGenerating?: boolean;
 }
 
@@ -30,6 +58,7 @@ export default function WallpaperForm({
   onDeviceChange,
   onGenerate,
   onTrackDataChange,
+  onLoadingChange,
   isGenerating = false
 }: WallpaperFormProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -61,6 +90,7 @@ export default function WallpaperForm({
 
       setIsLoading(true);
       setError(null);
+      onLoadingChange?.(true);
 
       try {
         const data = await parseSpotifyUrl(spotifyLink);
@@ -73,6 +103,7 @@ export default function WallpaperForm({
         onTrackDataChange?.(null);
       } finally {
         setIsLoading(false);
+        onLoadingChange?.(false);
       }
     };
 
@@ -116,11 +147,14 @@ export default function WallpaperForm({
               </p>
             )}
             
-            {!error && !trackData && (
+            {!error && !trackData && !isLoading && (
               <p className="text-xs text-muted-foreground">
                 Paste a link to any Spotify track you&apos;d like to create a wallpaper for
               </p>
             )}
+
+            {/* Loading Skeleton */}
+            {isLoading && <TrackInfoSkeleton />}
           </div>
 
         {/* Device Selection */}

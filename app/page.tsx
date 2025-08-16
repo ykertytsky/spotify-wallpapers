@@ -9,7 +9,7 @@ import { toPng } from 'html-to-image';
 
 export default function Home() {
   const [selectedDevice, setSelectedDevice] = useState<string>('mobile');
-  const [spotifyLink, setSpotifyLink] = useState<string>('');
+  const [spotifyLink, setSpotifyLink] = useState<string>('https://open.spotify.com/track/3T4N6wohtfOJN4okuvHiWT?si=9385d874985f4041');
   const [trackData, setTrackData] = useState<{
     songName: string;
     artistName: string;
@@ -17,6 +17,7 @@ export default function Home() {
     duration: string;
   } | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isLoadingTrack, setIsLoadingTrack] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
 
   const handleGenerate = async () => {
@@ -41,7 +42,6 @@ export default function Home() {
       const scaleY = targetRes.height / originalHeight;
       const scale = Math.min(scaleX, scaleY); // Maintain aspect ratio
       
-      console.log(`Generating 4K wallpaper: ${targetRes.width}x${targetRes.height} (scale: ${scale.toFixed(2)}x)`);
       
       const dataUrl = await toPng(previewRef.current, {
         cacheBust: true,
@@ -76,6 +76,10 @@ export default function Home() {
     setTrackData(data);
   }, []);
 
+  const handleLoadingChange = useCallback((loading: boolean) => {
+    setIsLoadingTrack(loading);
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <PageHeader />
@@ -87,11 +91,12 @@ export default function Home() {
           <WallpaperPreview 
             ref={previewRef}
             selectedDevice={selectedDevice}
-            songName={trackData?.songName || "Kickstart My Heart"}
-            artistName={trackData?.artistName || "Mötley Crüe"}
+            songName={trackData?.songName || "Drop It Like It's Hot!"}
+            artistName={trackData?.artistName || "HAARPER"}
             currentTime="0:21"
-            totalTime={trackData?.duration || "4:42"}
+            totalTime={trackData?.duration || "2:15"}
             albumArtUrl={trackData?.albumArt}
+            isLoading={isLoadingTrack}
           />
         </div>
 
@@ -104,6 +109,7 @@ export default function Home() {
             onDeviceChange={setSelectedDevice}
             onGenerate={handleGenerate}
             onTrackDataChange={handleTrackDataChange}
+            onLoadingChange={handleLoadingChange}
             isGenerating={isGenerating}
           />
         </div>

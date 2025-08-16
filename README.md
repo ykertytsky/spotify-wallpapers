@@ -2,14 +2,15 @@
 
 Create beautiful, high-resolution wallpapers from your favorite Spotify tracks. Generate 4K wallpapers for mobile, tablet, and desktop devices with a modern, dark-themed music player interface.
 
+> Check it out [right now](https://spotify-wallpapers.vercel.app/)
+
 ## ✨ Features
 
 - 🎨 **4K Resolution**: Generate ultra-high-definition wallpapers (up to 3840x2160)
-- 📱 **Multi-Device Support**: Optimized layouts for mobile, tablet, and desktop
 - 🎵 **Spotify Integration**: Connect any Spotify track URL to create wallpapers
+- 📱 **Multi-Device Support**: Optimized layouts for mobile, tablet, and desktop
 - 🖼️ **Modern UI**: Dark theme with sleek music player interface
 - ⚡ **Instant Generation**: Real-time preview and one-click download
-- 🔒 **Privacy First**: No data stored, all processing happens locally
 
 ## 🚀 Live Demo
 
@@ -20,7 +21,7 @@ Create beautiful, high-resolution wallpapers from your favorite Spotify tracks. 
 - **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
-- **UI Components**: Radix UI + Shadcn/ui
+- **UI Components**: Shadcn/ui
 - **Image Generation**: html-to-image
 - **Icons**: Lucide React + React Icons
 - **Deployment**: Vercel
@@ -43,7 +44,7 @@ Create beautiful, high-resolution wallpapers from your favorite Spotify tracks. 
    cp .env.example .env.local
    ```
    
-   Add your Spotify API credentials:
+   Add your Spotify API credentials (you can get them at [Spotify Developer Dashboard](https://developer.spotify.com/)):
    ```env
    SPOTIFY_CLIENT_ID=your_spotify_client_id
    SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
@@ -80,64 +81,7 @@ Create beautiful, high-resolution wallpapers from your favorite Spotify tracks. 
 - **Tablet**: 16:9 aspect ratio, perfect for tablets
 - **Desktop**: 16:9 aspect ratio, ideal for monitors
 
-### Generated Elements
 
-- Album artwork (fetched from Spotify)
-- Song title and artist name
-- Progress bar with time indicators
-- Playback control buttons
-- Dark theme with modern styling
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. **Push to GitHub**
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push origin main
-   ```
-
-2. **Deploy to Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Import your GitHub repository
-   - Add environment variables in project settings
-   - Deploy!
-
-### Environment Variables
-
-Set these in your Vercel project:
-
-```env
-SPOTIFY_CLIENT_ID=your_spotify_client_id
-SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
-```
-
-### Manual Deployment
-
-```bash
-npm run build
-npm start
-```
-
-## 🔧 Configuration
-
-### Spotify API Setup
-
-1. Go to [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
-2. Create a new application
-3. Copy Client ID and Client Secret
-4. Add to environment variables
-
-### Build Configuration
-
-The project includes optimized settings for production:
-
-- **Standalone Output**: Faster deployments
-- **Image Optimization**: Automatic WebP/AVIF conversion
-- **Security Headers**: XSS protection and content type validation
-- **Package Optimization**: Smaller bundle sizes
 
 ## 📁 Project Structure
 
@@ -193,14 +137,30 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Check browser console for errors
 - Ensure CORS is properly configured
 
-### Support
+# Support the Creator
 
-If you encounter issues:
-1. Check the [deployment guide](DEPLOYMENT.md)
-2. Review environment variable configuration
-3. Test locally with `npm run build`
-4. Open an issue on GitHub
+## 💰 Support Options
+
+### ![Solana](https://img.shields.io/badge/Solana-9945FF?style=for-the-badge&logo=Solana&logoColor=white) (SOL)
+```
+BrRcugNaKEKRXZ5sG7jNk6WeWVuJY5WafbQnJsv3d2kV
+```
+
+### ![Tether](https://img.shields.io/badge/Tether-26A17B?style=for-the-badge&logo=Tether&logoColor=white) (USDT TRC20)
+```
+TEGCtWaVxweGtEnSJanNedTxzPzEwChMc1
+```
+
+### ![Tether](https://img.shields.io/badge/Tether-26A17B?style=for-the-badge&logo=Tether&logoColor=white) (USDT ERC20)
+```
+0x85cee5737d639dff925b4ce2d987ff22254027d0
+```
+
+### ![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white) (ETH)
+```
+0x85cee5737d639dff925b4ce2d987ff22254027d0
+```
 
 ---
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by Yarema Kertytsky
